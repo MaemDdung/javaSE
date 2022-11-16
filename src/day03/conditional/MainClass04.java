@@ -1,6 +1,6 @@
 package day03.conditional;
 
-//1
+
 
 
 public class MainClass04 {
