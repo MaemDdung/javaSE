@@ -69,6 +69,15 @@ public class MainClass01 {
 		return name;	// MainClass01.name 
 	}
 	
+	
+	
+	/**
+	 * 포켓몬 진화 메소드
+	 *  	Alt + shift +j
+	 *  
+	 *  @param
+	 *  @return
+	 */
 	public static String getEvolution(String mon) {
 		String eMon = "";
 		if(mon.equals("꼬부기")) {
@@ -76,6 +85,11 @@ public class MainClass01 {
 		}else if(mon.equals("어니부기")) {
 			eMon = "거북왕";
 		}
+		
+	
+		
+		
+		
 		
 		return eMon;
 	}
