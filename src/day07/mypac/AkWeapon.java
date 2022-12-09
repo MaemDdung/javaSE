@@ -1,6 +1,6 @@
 package day07.mypac;
 /*
- * 인터페아스 상속 받는 방법
+ * 인터페이스 상속 받는 방법
  * 
  * implements 예약어로 선언한다.
  * 
