@@ -1,4 +1,4 @@
-package dya11.pattern;
+package day11.pattern;
 
 
 
