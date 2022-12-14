@@ -1,23 +1,31 @@
 package day12.io;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.nio.Buffer;
+
 
 /*
- * FileInpurStream / FileoutputStream
- * 
- * FileInpurStream
- * 				- 파일을 쓰는 객체 
- * FileoutputStream
- * 				- 파일을 읽는 객체
- * 
+ *  BufferedInputStream / BufferedOutputStream
+ *  - 버퍼 보조스트림
+ * 	- 성능도 더 향상된다.
+ * 	- 병목현상
+ *  
  */
-public class MainClass02 {
-	public static void main(String[] args) throws IOException {
+public class MainClass03 {
+	public static void main(String[] args) throws Exception {
 		FileInputStream fis = null;
+		BufferedInputStream bis = null;
+		
 		FileOutputStream fos = null;
+		BufferedOutputStream bos = null;
+		PrintStream ps = null;
+		
 		
 		try {
 			// hello.txt 파일을 읽기 위한 객체
@@ -36,26 +44,40 @@ public class MainClass02 {
 			// FileOutputStream 디렉토리 경로는 존재한다.
 			// 파일은 없으면 자동으로 생성된다.
 			fos = new FileOutputStream(f5);
+			bos = new BufferedOutputStream(fos);
+			
+			//
+			ps = new PrintStream(bos, true);
 			
 			int readByteCnt = 0;
-			byte[] b = new byte[3];
+			byte[] b = new byte[1024];
 			
 			//fis.read(b) => b 길이만큼 읽어서 b에 저장
 			// 읽은 길이값 readByteCnt에 저장
 			while((readByteCnt = fis.read(b)) != -1) {
 				// fos.write() => b 데이터 readbyteCnt 길이만큼 쓰기
-				fos.write(b, 0, readByteCnt);
+				bos.write(b, 0, readByteCnt);
 			}
 			
+			bos.flush();//남은 데이터를 쏟아내라!
 			
-			System.out.println("실행 완료");
-		} catch(IOException e) {
-			System.out.println("IOException 발생!");
-		} finally {
+			ps.println();
+			ps.print("=======================================");
+			ps.println("PrintStream으로 남겨요!!!");
+			
+		} catch (Exception e) {
+
+		}finally {
+			if(ps != null)ps.close();
+			if(bos != null)bos.close();
+			if(bis != null)bis.close();
 			if(fos != null)fos.close();
 			if(fis != null)fis.close();
+			
 		}
 		
-				
+		System.out.println("실행 완료");
+		
+		
 	}
 }
