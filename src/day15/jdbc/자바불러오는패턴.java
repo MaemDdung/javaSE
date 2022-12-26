@@ -5,17 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-/*
- * 
- * JDBC * 	해당 DBMS 관련 jdbc.jar 추가해야한다. ex) jdbc.jar
- * 	[Build path] -> [Configure Build path] -> [Libraries] 탭
- * 	-> [add External JARs...] 로 jdbc.jar 파일 추가하기
- * 
- * 	모르겠으면 구글링! 설정
- * 
- */
 
-public class MainClass01 {
+public class 자바불러오는패턴 {
 
 	public static void main(String[] args) throws SQLException {
 		Connection conn = null;
@@ -23,23 +14,20 @@ public class MainClass01 {
 		ResultSet rs = null;
 		
 		try {
-			 // 1. 드라이버 클래스 정보를 로딩
+			//1. 드라이버 클래스 정보를 로딩
 			 Class.forName("oracle.jdbc.driver.OracleDriver");
 			 
 			 
 			 // 2. 데이터 베이스 
 			 String url = "jdbc:oracle:thin:@localhost:21521:xe";
 			 conn = DriverManager.getConnection(url, "hr", "hr");
-			 
 			 // 3. 쿼리 수행 위한  
 			 stmt = conn.createStatement();
-			 
 			 // 4.SQL 쿼리 작성 
 			 String departmentId = "20";
 			 String sql = "SELECT * "
 					 + "FROM employees "
 					 + "WHERE department_id = " + departmentId;
-			 
 			 // 5. 쿼리 수행
 			 rs = stmt.executeQuery(sql);
 			 
@@ -60,6 +48,7 @@ public class MainClass01 {
 			if(stmt != null)stmt.close();
 			if(conn != null)conn.close();
 			
+			//다음시간에 바인드 변수 설명 해주세요
 		}
 		
 	}
