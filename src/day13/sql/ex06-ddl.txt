@@ -125,3 +125,24 @@ alter table dept2 drop constraint 제약조건명;
 
 -- 제약조건 추가하기
 alter table dept2 add(constraint 제약조건명 primary key(deptno));
+
+
+/*
+시퀀스(Sequence)
+    연속적인 숫자 값을 자동으로 증감 시켜서 값을 리턴하는 객체
+
+*/
+
+CREATE SEQUENCE my_seq;
+SELECT my_seq.NEXTVAL FROM dual;
+DROP SEQUENCE my_seq;
+SELECT my_seq.NEXTVAL FROM dual;
+
+SELECT * FROM dept2;
+
+INSERT into dept2 VALUES (my.seq.NEXTVAL, 'A', 1);
+INSERT into dept2 VALUES (my.seq.NEXTVAL, 'B', 2);
+INSERT INTO dept2 VALUES (my.seq.NEXTVAL, 'C', 1);
+
+
+
