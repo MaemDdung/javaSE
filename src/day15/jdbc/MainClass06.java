@@ -14,7 +14,6 @@ public class MainClass06 {
 		// Statement 사용하지 말고 preparedStatement 사용하자!! //바인드 변수때문에
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		boolean isSuccess = false;
 				
 		try {
 			 // 1. 드라이버 클래스 정보를 로딩
